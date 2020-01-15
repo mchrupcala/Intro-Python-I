@@ -20,5 +20,36 @@ and does the following:
 """
 
 import sys
+import time
 import calendar
 from datetime import datetime
+
+userinput = sys.argv
+monthdict = {
+  "Jan": 1,
+"Feb": 2,
+"Mar": 3,
+"Apr": 4,
+"May": 5,
+"Jun": 6,
+"Jul": 7,
+"Aug": 8,
+"Sep": 9,
+"Oct": 10,
+"Nov": 11,
+"Dec": 12
+}
+# userinput = str(input("Please enter a filename, month, and year: "))
+# def calfunc(file, month=datetime.date.month, year=datetime.date.year):
+def calfunc(args):
+
+  if len(args) == 1:
+    print(calendar.TextCalendar().formatmonth(datetime.now().year, datetime.now().month))
+  elif len(args) == 2:
+    print(calendar.TextCalendar().formatmonth(datetime.now().year, monthdict[args[1]]))
+  elif len(args) == 3:
+    print(calendar.TextCalendar().formatmonth(int(args[2]), monthdict[args[1]]))
+  else:
+    print("Please enter info in the following format: file_name [month] [year]")
+
+calfunc(userinput)
